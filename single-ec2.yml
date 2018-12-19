@@ -1,0 +1,2 @@
+- import_playbook: setup-ec2.yml
+- import_playbook: setup-jupyter.yml

@@ -1,0 +1,9 @@
+- name: Configure instance for Redash & Jupyter
+  hosts: web
+  # vars_files:
+  #   - vars/web-redash-deploy-vars.yml
+  become: true
+  roles:
+    - common
+    - jupyter
+    - web

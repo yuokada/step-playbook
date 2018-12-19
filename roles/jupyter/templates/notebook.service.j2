@@ -1,0 +1,15 @@
+[Unit]
+Description=Running Jupyter nootbook
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/notebook
+PrivateTmp=true
+Type=Simple
+# PIDFile=/var/run/notebook/notebook.pid
+ExecStart=/home/ubuntu/venv/bin/jupyter-notebook --ip=0.0.0.0 --no-browser --config=/home/ubuntu/.jupyter/jupyter_notebook_config.py
+
+[Install]
+WantedBy=multi-user.target

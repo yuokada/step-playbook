@@ -1,0 +1,124 @@
+---
+- name: Upgrade build-essential package
+  become: true
+  apt: name="{{ packages }}" state=present update_cache=yes
+  vars:
+    packages:
+    - build-essential
+
+- name: Upgrade python base package
+  become: true
+  apt: name="{{ packages }}" state=present update_cache=yes
+  vars:
+    packages:
+    - python3-venv
+    - python3-dev
+    - python-dev
+
+- name: exist? =>  /home/ubuntu/venv
+  command: /bin/ls /home/ubuntu/venv
+  register: result
+  ignore_errors: True
+
+- name: Create virtualenv to /home/ubuntu/venv
+  shell: python3.6 -m venv venv
+  args:
+    chdir: /home/ubuntu
+  when: result is failed
+
+- name: Update pip to latest version
+  pip:
+    name: pip
+    state: latest
+    virtualenv: /home/ubuntu/venv
+
+- name: Create /home/ubuntu/.jupyter directory
+  file:
+    path:    /home/ubuntu/.jupyter
+    state:   directory
+    owner:   ubuntu
+    group:   ubuntu
+
+- name: Create /home/ubuntu/notebook
+  file:
+    path:    /home/ubuntu/notebook
+    state:   directory
+    owner:   ubuntu
+    group:   ubuntu
+
+- name: Copy requirements.txt
+  copy:
+    src:   requirements.txt
+    dest:  /home/ubuntu/requirements.txt
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+
+- name: Install awscli, notebook, etc PyPI Package
+  pip:
+    requirements: /home/ubuntu/requirements.txt
+    virtualenv:   /home/ubuntu/venv
+
+##### Setup systemd service #####
+
+- name: Put $HOME/.jupyter/jupyter_notebook_config.py
+  template:
+    src:   jupyter_notebook_config.py.j2
+    dest:  /home/ubuntu/.jupyter/jupyter_notebook_config.py
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+
+- name: Put notebook.service
+  template:
+    src:   notebook.service.j2
+    dest:  /etc/systemd/system/notebook.service
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+
+- name: Enable & Start notebook.service
+  systemd:
+    name:    notebook.service
+    state:   started
+    daemon_reload: yes
+    enabled: yes
+
+##### Setup R-Lang Environment #####
+
+- name: Upgrade r-base package
+  become: true
+  apt: name="{{ packages }}" state=present
+  vars:
+    packages:
+    - r-base
+
+- name: Create /home/ubuntu/R directory
+  file:
+    path: /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.4/
+    state: directory
+    owner: ubuntu
+    group: ubuntu
+
+- name: Copy requirements-rlang.txt
+  copy:
+    src:   requirements-rlang.txt
+    dest:  /home/ubuntu/requirements-rlang.txt
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+
+- name: Copy kernel-install.R
+  copy:
+    src:   kernel-install.R
+    dest:  /tmp/kernel-install.R
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+    backup: Yes
+
+- name: Exec /usr/bin/R -f /tmp/kernel-install.R
+  command: /usr/bin/R -q -f /tmp/kernel-install.R
+  args:
+    chdir: /home/ubuntu
+  ignore_errors: True

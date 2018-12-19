@@ -1,0 +1,31 @@
+- name: Add tags to existing instances
+  hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: "Create ec2 instance"
+      # see: https://docs.ansible.com/ansible/devel/modules/ec2_module.html
+      ec2:
+        instance_type: t2.small
+        image: ami-009571af26dc2a231
+        key_name: ssh-for-redash
+        wait: yes
+        group: redash-testgroup
+        count: 1
+        # exact_count: 1
+        # vpc_subnet_id: vpc-91489cf8
+        vpc_subnet_id: subnet-59cfc413
+        assign_public_ip: yes
+        instance_tags:
+          env: stage
+        region: us-east-2
+      register: ec2
+    - name: 新規作成したインタンスをホストグループに追加する
+      add_host:
+        name: "{{ ec2.instances[0].public_ip }}"
+        groups:
+        - "web-redash"
+        - "web"
+    - name: インスタンスが起動し、SSHで接続できるようになるまで待つ
+      wait_for:
+        host={{ ec2.instances[0]["dns_name"] }}
+        port=22 delay=60 timeout=320 state=started

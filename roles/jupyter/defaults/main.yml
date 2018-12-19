@@ -1,0 +1,5 @@
+---
+# defaults file for jupyter
+
+jupyter_config_notebookapp_token: generated
+jupyter_config_notebookapp_base_url: /jupyter
