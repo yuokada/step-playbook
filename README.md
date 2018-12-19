@@ -1,4 +1,3 @@
-
 ## MEMO
 
 ```
@@ -74,7 +73,7 @@ location /notebook {
 
 ----
 
-```nginx
+```
 ubuntu@ip-172-31-44-216 /o/redash ❯❯❯ sudo apt list nginx r-base
 Listing... Done
 nginx/bionic-updates,bionic-security,now 1.14.0-0ubuntu1.2 all [installed]
