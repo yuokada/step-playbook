@@ -18,6 +18,28 @@ $ wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory
 - [AMI をゼロから作る | KRAY Inc](http://kray.jp/blog/ami-%E3%82%92%E3%82%BC%E3%83%AD%E3%81%8B%E3%82%89%E4%BD%9C%E3%82%8B/)
 - [EC2でCentOS6のEBS-Backed HVM方式 AMIをゼロから作る - Qiita](https://qiita.com/cs_sonar/items/caed4c543d79605e717d)
 
+### EC2 - inventory
+
+1. Get remote files
+```
+$ wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.ini
+$ wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/ec2.py
+```
+
+1. Edit ec2.ini
+```
+# Ansible EC2 external inventory script settings
+
+;[credentials]
+;aws_access_key_id =
+;aws_secret_access_key =
+;regions = us-east-2
+
+[ec2]
+elasticache = False
+cache_max_age = 300
+```
+
 ## Jpyter
 
 - [Jupyter Advent Calendar 2017 - Qiita](https://qiita.com/advent-calendar/2017/jupyter)

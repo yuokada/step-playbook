@@ -1,7 +1,0 @@
-[web]
-; web1  ansible_ssh_host=18.225.19.244 ansible_ssh_port=22
-web2  ansible_ssh_host=3.16.105.96 ansible_ssh_port=22
-
-[all:vars]
-; https://docs.ansible.com/ansible/2.4/python_3_support.html
-ansible_python_interpreter=/usr/bin/python3
