@@ -4,8 +4,8 @@
 
 ```
 $ cd `git rev-parse --show-toplevel`
-$ packer build build-script.json
-$ packer validate build-script.json
+$ packer validate packer/build-script.json
+$ packer build    packer/build-script.json
 ```
 
 ## Change aws profile
