@@ -67,6 +67,14 @@
     group: ubuntu
     mode:  0644
 
+- name: Put /etc/default/notebook
+  copy:
+    src:   notebook-environmentfile
+    dest:  /etc/default/notebook
+    owner: ubuntu
+    group: ubuntu
+    mode:  0644
+
 - name: Put notebook.service
   template:
     src:   notebook.service.j2
@@ -74,13 +82,6 @@
     owner: ubuntu
     group: ubuntu
     mode:  0644
-
-- name: Enable & Start notebook.service
-  systemd:
-    name:    notebook.service
-    state:   started
-    daemon_reload: yes
-    enabled: yes
 
 ##### Setup R-Lang Environment #####
 
@@ -108,14 +109,28 @@
 - name: Copy kernel-install.R
   copy:
     src:   kernel-install.R
-    dest:  /tmp/kernel-install.R
+    dest:  /home/ubuntu/kernel-install.R
     owner: ubuntu
     group: ubuntu
     mode:  0644
     backup: Yes
 
-- name: Exec /usr/bin/R -f /tmp/kernel-install.R
-  command: /usr/bin/R -q -f /tmp/kernel-install.R
+- name: Exec /usr/bin/Rscript -f /home/ubuntu/kernel-install.R
+  shell: PATH=/home/ubuntu/venv/bin:$PATH /usr/bin/Rscript /home/ubuntu/kernel-install.R
   args:
     chdir: /home/ubuntu
   ignore_errors: True
+
+- name: Change owner:group to ubuntu in /home/ubuntu/R
+  file:
+    path: /home/ubuntu/R
+    owner: ubuntu
+    group: ubuntu
+    recurse: yes
+
+- name: Enable & Start notebook.service
+  systemd:
+    name:    notebook.service
+    state:   started
+    daemon_reload: yes
+    enabled: yes

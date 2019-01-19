@@ -1,2 +1,7 @@
 ---
-# handlers file for jupyter
+- name: Restart notebook.service
+  systemd:
+    name: notebook.service
+    state: restarted
+    daemon_reload: yes
+  listen: "restart notebook.service"
