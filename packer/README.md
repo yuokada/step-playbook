@@ -3,6 +3,7 @@
 ## How to build ami image
 
 ```
+$ cd `git rev-parse --show-toplevel`
 $ packer build build-script.json
 $ packer validate build-script.json
 ```
