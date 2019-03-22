@@ -17,8 +17,7 @@ data "aws_iam_policy_document" "example" {
     principals {
       type = "AWS"
 
-      # identifiers = ["arn:aws:iam::AIDAIBQL5W7YCJQAHIWNO:root"]
-      identifiers = ["*"]
+      identifiers = ["${var.test_account_arn}"]
     }
 
     actions = ["s3:*"]
