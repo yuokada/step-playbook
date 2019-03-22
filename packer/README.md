@@ -12,13 +12,10 @@ $ packer build    packer/build-script.json
 [Amazon AMI \- Builders \- Packer by HashiCorp](https://www.packer.io/docs/builders/amazon.html)
 
 ```
-$ export AWS_ACCESS_KEY_ID="anaccesskey"
-$ export AWS_SECRET_ACCESS_KEY="asecretkey"
-$ export AWS_DEFAULT_REGION="us-west-2"
-
-$ export AWS_DEFAULT_REGION="$(aws configure get region)" ;\
-  export AWS_ACCESS_KEY_ID="$(aws configure get aws_access_key_id)" ;\
-  export AWS_SECRET_ACCESS_KEY="$(aws configure get aws_secret_access_key)" ;\
+$ export AWS_PROFILE=default ;\
+  export AWS_DEFAULT_REGION="$(aws    configure --profile $AWS_PROFILE get region)" ;\
+  export AWS_ACCESS_KEY_ID="$(aws     configure --profile $AWS_PROFILE get aws_access_key_id)" ;\
+  export AWS_SECRET_ACCESS_KEY="$(aws configure --profile $AWS_PROFILE get aws_secret_access_key)" ;\
   echo $AWS_DEFAULT_REGION $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY
 
 $ packer build packer.json
