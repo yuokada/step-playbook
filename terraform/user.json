@@ -1,0 +1,19 @@
+{
+    "User": {
+        "Path": "/",
+        "UserName": "mba-admin",
+        "UserId": "AIDAIBQL5W7YCJQAHIWNO",
+        "Arn": "arn:aws:iam::949140100595:user/mba-admin",
+        "CreateDate": "2019-03-22T13:01:57Z",
+        "Tags": [
+            {
+                "Key": "role",
+                "Value": "admin"
+            },
+            {
+                "Key": "machine",
+                "Value": "mba"
+            }
+        ]
+    }
+}
