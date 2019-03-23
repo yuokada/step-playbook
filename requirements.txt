@@ -1,10 +1,6 @@
-ansible==2.7.4
-ansible-kernel==0.8.0
-ansible-runner==1.1.2
-appnope==0.1.0
-arrow==0.12.1
-asn1crypto==0.24.0
-awscli==1.16.67
+ansible>=2.7.4
+ansible-kernel>=0.8.0
+awscli>=1.16.67
 backcall==0.1.0
 bcrypt==3.1.4
 binaryornot==0.4.4
