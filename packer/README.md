@@ -23,3 +23,67 @@ $ packer build packer.json
 
 ## Set variable
 [User Variables \- Templates \- Packer by HashiCorp](https://www.packer.io/docs/templates/user-variables.html)
+
+## Change base AMI
+
+- [Ubuntu Amazon EC2 AMI Finder](https://cloud-images.ubuntu.com/locator/ec2/ "Ubuntu Amazon EC2 AMI Finder")
+- [Amazon EBS - Builders - Packer by HashiCorp](https://www.packer.io/docs/builders/amazon-ebs.html "Amazon EBS - Builders - Packer by HashiCorp")
+
+```
+% aws --profile packer ec2 describe-images --image-ids ami-033a0960d9d83ead0
+```
+
+### Example
+
+```
+% aws --profile packer ec2 describe-images --image-ids ami-033a0960d9d83ead0
+{
+    "Images": [
+        {
+            "Architecture": "x86_64",
+            "CreationDate": "2019-05-01T11:45:45.000Z",
+            "ImageId": "ami-033a0960d9d83ead0",
+            "ImageLocation": "099720109477/ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20190429",
+            "ImageType": "machine",
+            "Public": true,
+            "OwnerId": "099720109477",
+            "State": "available",
+            "BlockDeviceMappings": [
+                {
+                    "DeviceName": "/dev/sda1",
+                    "Ebs": {
+                        "DeleteOnTermination": true,
+                        "SnapshotId": "snap-0a8a9392ce686c33c",
+                        "VolumeSize": 8,
+                        "VolumeType": "gp2",
+                        "Encrypted": false
+                    }
+                },
+                {
+                    "DeviceName": "/dev/sdb",
+                    "VirtualName": "ephemeral0"
+                },
+                {
+                    "DeviceName": "/dev/sdc",
+                    "VirtualName": "ephemeral1"
+                }
+            ],
+            "Description": "Canonical, Ubuntu, 18.04 LTS, amd64 bionic image build on 2019-04-29",
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "Name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-20190429",
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "SriovNetSupport": "simple",
+            "VirtualizationType": "hvm"
+        }
+    ]
+}
+```
+
+## Use variables
+
+- [User Variables - Templates - Packer by HashiCorp](https://www.packer.io/docs/templates/user-variables.html "User Variables - Templates - Packer by HashiCorp")
+- [vars – Lookup templated value of variables — Ansible Documentation](https://docs.ansible.com/ansible/latest/plugins/lookup/vars.html "vars – Lookup templated value of variables — Ansible Documentation")
+- [[Ansible] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ (tekunabe)](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env "[Ansible] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ (tekunabe)")
+- [AMI作成のPackerプロジェクトのワタシ的ベストプラクティス！ - そうなんでげす](https://www.soudegesu.com/aws/my-packer-best-practice/ "AMI作成のPackerプロジェクトのワタシ的ベストプラクティス！ - そうなんでげす")

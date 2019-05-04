@@ -1,22 +1,29 @@
 {
+  "variables": {
+    "jupyter_notebook_password": "default_p@ssw0rd"
+  },
+  "sensitive-variables": [
+    "jupyter_notebook_password"
+  ],
   "builders": [{
     "type": "amazon-ebs",
     "region": "us-east-2",
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
-        "name": "redash-5.0.2-b5486-build2-us-east-2",
+        "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
         "root-device-type": "ebs"
       },
-      "owners": ["465267886299"],
+      "owners": ["099720109477"],
       "most_recent": true
     },
     "instance_type": "t2.small",
     "ssh_username": "ubuntu",
+    "ssh_timeout": "5m",
     "ami_name": "Packer custom redash ami {{isotime | clean_ami_name}}",
     "tags": {
       "builder": "packer",
-      "ec2_role": "web"
+      "ec2_role": "step-server"
     },
     "launch_block_device_mappings": [{
       "delete_on_termination": true,
@@ -28,20 +35,30 @@
   "provisioners": [{
       "type": "shell",
       "inline": [
+        "echo sleep 60",
+        "sleep 60",
         "sudo apt-get update",
-        "until sudo apt-get install -y build-essential; do echo 'Retry' && sleep 6; done",
+        "until sudo apt-get install -qq -y build-essential; do echo 'Retry' && sleep 6; done",
         "sudo echo `date`' - packer provisioned this AMI' > /home/ubuntu/packer_provisioners"
       ]
     },
     {
-      "type": "ansible",
+      "type": "shell",
+      "inline": [
+        "sudo apt-get install -y -qq python3-venv python3-dev python3-pip python-dev",
+        "sudo pip3 --no-cache-dir install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
       "extra_arguments": [
         "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"
       ],
-      "ansible_env_vars": [
-        "ANSIBLE_ROLES_PATH=./roles",
-        "ANSIBLE_RETRY_FILES_ENABLED=False"
+      "role_paths": [
+        "roles/common",
+        "roles/jupyter"
       ],
+      "group_vars": "group_vars",
       "playbook_file": "./packer/packer_playbook.yml"
     }
   ]
