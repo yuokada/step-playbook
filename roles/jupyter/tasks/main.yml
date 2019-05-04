@@ -83,51 +83,6 @@
     group: ubuntu
     mode:  0644
 
-##### Setup R-Lang Environment #####
-
-- name: Upgrade r-base package
-  apt: name="{{ packages }}" state=present
-  vars:
-    packages:
-    - r-base
-
-- name: Create /home/ubuntu/R directory
-  file:
-    path: /home/ubuntu/R/x86_64-pc-linux-gnu-library/3.4/
-    state: directory
-    owner: ubuntu
-    group: ubuntu
-
-- name: Copy requirements-rlang.txt
-  copy:
-    src:   requirements-rlang.txt
-    dest:  /home/ubuntu/requirements-rlang.txt
-    owner: ubuntu
-    group: ubuntu
-    mode:  0644
-
-- name: Copy kernel-install.R
-  copy:
-    src:   kernel-install.R
-    dest:  /home/ubuntu/kernel-install.R
-    owner: ubuntu
-    group: ubuntu
-    mode:  0644
-    backup: Yes
-
-- name: Exec /usr/bin/Rscript -f /home/ubuntu/kernel-install.R
-  shell: PATH=/home/ubuntu/venv/bin:$PATH /usr/bin/Rscript /home/ubuntu/kernel-install.R
-  args:
-    chdir: /home/ubuntu
-  ignore_errors: True
-
-- name: Change owner:group to ubuntu in /home/ubuntu/R
-  file:
-    path: /home/ubuntu/R
-    owner: ubuntu
-    group: ubuntu
-    recurse: yes
-
 - name: Enable & Start notebook.service
   systemd:
     name:    notebook.service
