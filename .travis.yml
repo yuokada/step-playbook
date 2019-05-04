@@ -9,5 +9,5 @@ before_script:
 script:
   - ansible --version
   - ansible-lint --version
-  # - ansible-playbook -i inventory/web.yml --syntax-check *.yml
+  - ansible-playbook -i inventory/web.yml --syntax-check *.yml
   - ansible-lint tasks/*.yml
