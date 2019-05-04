@@ -1,7 +1,6 @@
 - name: Configure instance for Redash & Jupyter
-  hosts: web
+  hosts: all
   become: true
   roles:
     - common
     - jupyter
-    - web
