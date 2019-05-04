@@ -1,4 +1,6 @@
 ## step server playbook & packer
+[![Build Status](https://travis-ci.com/yuokada/step-playbook.svg?token=moxtxRvzi4bB9jfjEJjk&branch=master)](https://travis-ci.com/yuokada/step-playbook)
+
 
 <!--
 ## Official AMI
