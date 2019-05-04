@@ -80,3 +80,10 @@ $ packer build packer.json
     ]
 }
 ```
+
+## Use variables
+
+- [User Variables - Templates - Packer by HashiCorp](https://www.packer.io/docs/templates/user-variables.html "User Variables - Templates - Packer by HashiCorp")
+- [vars – Lookup templated value of variables — Ansible Documentation](https://docs.ansible.com/ansible/latest/plugins/lookup/vars.html "vars – Lookup templated value of variables — Ansible Documentation")
+- [[Ansible] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ (tekunabe)](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env "[Ansible] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ (tekunabe)")
+- [AMI作成のPackerプロジェクトのワタシ的ベストプラクティス！ - そうなんでげす](https://www.soudegesu.com/aws/my-packer-best-practice/ "AMI作成のPackerプロジェクトのワタシ的ベストプラクティス！ - そうなんでげす")
