@@ -1,5 +1,6 @@
 ## step server playbook & packer
 
+<!--
 ## Official AMI
 
 - https://cloud-images.ubuntu.com/locator/ec2/
@@ -33,3 +34,4 @@ c.NotebookApp.password = '...'
 c.NotebookApp.port = 8888
 c.NotebookApp.port_retries = 50
 ```
+-->
