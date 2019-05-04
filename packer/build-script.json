@@ -19,6 +19,7 @@
     },
     "instance_type": "t2.small",
     "ssh_username": "ubuntu",
+    "ssh_timeout": "5m",
     "ami_name": "Packer custom redash ami {{isotime | clean_ami_name}}",
     "tags": {
       "builder": "packer",
@@ -34,6 +35,8 @@
   "provisioners": [{
       "type": "shell",
       "inline": [
+        "echo sleep 60",
+        "sleep 60",
         "sudo apt-get update",
         "until sudo apt-get install -y build-essential; do echo 'Retry' && sleep 6; done",
         "sudo echo `date`' - packer provisioned this AMI' > /home/ubuntu/packer_provisioners"
