@@ -22,7 +22,7 @@
     "ami_name": "Packer custom redash ami {{isotime | clean_ami_name}}",
     "tags": {
       "builder": "packer",
-      "ec2_role": "web"
+      "ec2_role": "step-server"
     },
     "launch_block_device_mappings": [{
       "delete_on_termination": true,
