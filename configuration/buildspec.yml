@@ -1,0 +1,26 @@
+---
+version:             0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "HashiCorp Packer をインストール中..."
+      - curl -qL -o packer.zip https://releases.hashicorp.com/packer/1.4.0/packer_1.4.0_linux_amd64.zip && unzip packer.zip -d t
+      - echo "jq をインストール中..."
+      - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
+      - echo "amazon-linux_packer-template.json をバリデーションします"
+      - pip3 install -r requirements.txt
+      - ./t/packer validate --var-file=packer/vars.json packer/build-script.json
+
+  build:
+    commands:
+      ### HashiCorp Packer cannot currently obtain the AWS CodeBuild-assigned role and its credentials
+      ### Manually capture and configure the AWS CLI to provide HashiCorp Packer with AWS credentials
+      ### More info here: https://github.com/mitchellh/packer/issues/4279
+      - echo "HashiCorp Packer のテンプレート amazon-linux_packer-template.json をビルド"
+      - whoami
+      - ./t/packer build -color=false -var-file=packer/vars.json packer/build-script.json
+
+  post_build:
+    commands:
+      - echo "HashiCorp Packer によるビルドが完了しました。 `date`"
