@@ -5,10 +5,10 @@
     "source_ami_filter": {
       "filters": {
         "virtualization-type": "hvm",
-        "name": "redash-5.0.2-b5486-build2-us-east-2",
+        "name": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*",
         "root-device-type": "ebs"
       },
-      "owners": ["465267886299"],
+      "owners": ["099720109477"],
       "most_recent": true
     },
     "instance_type": "t2.small",
