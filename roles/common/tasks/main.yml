@@ -1,6 +1,6 @@
 ---
 - name: Upgrade base package
-  become: true
+  become: yes
   apt: name="{{ packages }}" state=present update_cache=yes
   vars:
     packages:
