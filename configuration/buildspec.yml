@@ -10,6 +10,7 @@ phases:
       - curl -qL -o jq https://stedolan.github.io/jq/download/linux64/jq && chmod +x ./jq
       - echo "amazon-linux_packer-template.json をバリデーションします"
       - pip3 install -r requirements.txt
+      - pip3 install -U "ansible==2.7.5"
       - ./t/packer validate --var-file=packer/vars.json packer/build-script.json
 
   build:
