@@ -38,20 +38,27 @@
         "echo sleep 60",
         "sleep 60",
         "sudo apt-get update",
-        "until sudo apt-get install -y build-essential; do echo 'Retry' && sleep 6; done",
+        "until sudo apt-get install -qq -y build-essential; do echo 'Retry' && sleep 6; done",
         "sudo echo `date`' - packer provisioned this AMI' > /home/ubuntu/packer_provisioners"
       ]
     },
     {
-      "type": "ansible",
+      "type": "shell",
+      "inline": [
+        "sudo apt-get install -y -qq python3-venv python3-dev python3-pip python-dev",
+        "sudo pip3 --no-cache-dir install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
       "extra_arguments": [
         "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"
       ],
-      "ansible_env_vars": [
-        "JUPYTER_NOTEBOOK_PASSWORD={{ user `jupyter_notebook_password` }}",
-        "ANSIBLE_ROLES_PATH=./roles",
-        "ANSIBLE_RETRY_FILES_ENABLED=False"
+      "role_paths": [
+        "roles/common",
+        "roles/jupyter"
       ],
+      "group_vars": "group_vars",
       "playbook_file": "./packer/packer_playbook.yml"
     }
   ]

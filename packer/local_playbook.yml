@@ -2,7 +2,7 @@
  - hosts: localhost
    connection: local
    gather_facts: no
-   become: true
+   become: no
    roles:
      - common
      - jupyter
