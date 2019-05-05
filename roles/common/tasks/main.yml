@@ -1,14 +1,14 @@
 ---
-- name: Upgrade base package
-  become: yes
-  apt: name="{{ packages }}" state=present update_cache=yes
-  vars:
-    packages:
-    - git
-    - vim
-    - zsh
-    - tree
-    - language-pack-ja
+# - name: Upgrade base package
+#   become: yes
+#   apt: name="{{ packages }}" state=present update_cache=yes
+#   vars:
+#     packages:
+#     - git
+#     - vim
+#     - zsh
+#     - tree
+#     - language-pack-ja
 
 - name: Copy .bash_profile
   copy:
