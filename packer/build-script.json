@@ -45,7 +45,7 @@
     {
       "type": "ansible",
       "extra_arguments": [
-        "-vvv",
+        "-vvvv",
         "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"
       ],
       "ansible_env_vars": [
