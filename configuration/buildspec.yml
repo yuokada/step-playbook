@@ -19,7 +19,7 @@ phases:
       ### More info here: https://github.com/mitchellh/packer/issues/4279
       - echo "HashiCorp Packer のテンプレート amazon-linux_packer-template.json をビルド"
       - whoami
-      - PACKER_LOG=1 ./t/packer build -var-file=packer/vars.json packer/build-script.json
+      - PACKER_LOG=1 ./t/packer build -color=false -var-file=packer/vars.json packer/build-script.json
 
   post_build:
     commands:
