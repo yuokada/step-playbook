@@ -39,7 +39,6 @@
         "sleep 60",
         "sudo apt-get update",
         "until sudo apt-get install -q -y build-essential; do echo 'Retry' && sleep 6; done",
-        "mkdir /root/",
         "sudo echo `date`' - packer provisioned this AMI' > /home/ubuntu/packer_provisioners"
       ]
     },
