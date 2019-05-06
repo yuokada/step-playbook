@@ -39,6 +39,7 @@
         "sleep 60",
         "sudo apt-get update",
         "until sudo apt-get install -q -y build-essential; do echo 'Retry' && sleep 6; done",
+        "mkdir -p /root/.ansible/tmp/ && chmod 0777 -R /root/.ansible/",
         "sudo echo `date`' - packer provisioned this AMI' > /home/ubuntu/packer_provisioners"
       ]
     },
