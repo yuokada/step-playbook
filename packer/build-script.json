@@ -49,6 +49,7 @@
         "--user", "ubuntu",
         "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"
       ],
+      "sftp_command": "/usr/libexec/openssh/sftp-server -e",
       "ansible_env_vars": [
         "JUPYTER_NOTEBOOK_PASSWORD={{ user `jupyter_notebook_password` }}",
         "ANSIBLE_ROLES_PATH=./roles",
