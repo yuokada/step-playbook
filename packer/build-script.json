@@ -45,8 +45,6 @@
     {
       "type": "ansible",
       "extra_arguments": [
-        "-vvvv",
-        "--user", "ubuntu",
         "--extra-vars", "ansible_python_interpreter=/usr/bin/python3"
       ],
       "sftp_command": "/usr/libexec/openssh/sftp-server -e",
