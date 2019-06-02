@@ -21,6 +21,7 @@
     "ssh_username": "ubuntu",
     "ssh_pty": true,
     "ssh_timeout": "5m",
+    "user_data_file": "./packer/ec2-user-data",
     "ami_name": "Packer custom redash ami {{isotime | clean_ami_name}}",
     "tags": {
       "builder": "packer",

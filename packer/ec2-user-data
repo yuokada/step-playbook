@@ -1,0 +1,10 @@
+#!/bin/bash
+# ここで入れたEC2ユーザーデータは、packerビルド時のみ投入される。
+# AutoScaling起動設定のもので上書きされる。
+
+# SourceAMIの起動時にねじ込んで実行させるシェルスクリプト
+# このファイルが存在してるとPacker生成のSSHキーの設置に失敗する
+rm -f /home/ec2-user/.ssh/authorized_keys
+
+# packerしてる最中に動かれると、果てしなく面倒なものは止めておく
+chkconfig app-server off || true
