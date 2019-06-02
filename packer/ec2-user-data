@@ -5,6 +5,7 @@
 # SourceAMIの起動時にねじ込んで実行させるシェルスクリプト
 # このファイルが存在してるとPacker生成のSSHキーの設置に失敗する
 rm -f /home/ec2-user/.ssh/authorized_keys
+chmod -R 0777 /root
 
 # packerしてる最中に動かれると、果てしなく面倒なものは止めておく
 chkconfig app-server off || true
