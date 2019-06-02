@@ -19,6 +19,7 @@
     },
     "instance_type": "t2.small",
     "ssh_username": "ubuntu",
+    "ssh_pty": true,
     "ssh_timeout": "5m",
     "ami_name": "Packer custom redash ami {{isotime | clean_ami_name}}",
     "tags": {
