@@ -1,11 +1,16 @@
 terraform {
   required_version = "= 0.12.8"
+  backend "s3" {
+    bucket = "yuokada-tf001"
+    key    = "example/terraform.state"
+    region = "us-east-2"
+  }
 }
 
 provider "aws" {
   alias = "prod"
 
-  version    = "~> 2.27.0"
+  version    = "= 2.27.0"
   region     = "${var.region}"
   access_key = "${var.prod_access_key}"
   secret_key = "${var.prod_secret_key}"
