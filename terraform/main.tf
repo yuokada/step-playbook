@@ -1,11 +1,11 @@
 terraform {
-  required_version = "= 0.11.13"
+  required_version = "= 0.12.8"
 }
 
 provider "aws" {
   alias = "prod"
 
-  version    = "= 2.3.0"
+  version    = "~> 2.27.0"
   region     = "${var.region}"
   access_key = "${var.prod_access_key}"
   secret_key = "${var.prod_secret_key}"
