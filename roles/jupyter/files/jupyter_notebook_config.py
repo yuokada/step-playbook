@@ -1,4 +1,5 @@
 # Configuration file for jupyter-notebook.
+# flake8: noqa
 
 #------------------------------------------------------------------------------
 # Application(SingletonConfigurable) configuration
