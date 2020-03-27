@@ -33,3 +33,4 @@ jobs:
         ansible --version
         ansible-lint --version
         ansible-lint roles/*/*/*.yml
+        ansible-playbook -i inventory/web.yml --syntax-check *.yml
