@@ -7,10 +7,10 @@ updates:
       interval: "monthly"
     reviewers:
       - "yuokada"
-  - package-ecosystem: "pip"
-    directory: "/roles/jupyter/files"
-    ignore:
-      - dependency-name: "*"
+#   - package-ecosystem: "pip"
+#     directory: "/roles/jupyter/files"
+#     ignore:
+#       - dependency-name: "*"
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
