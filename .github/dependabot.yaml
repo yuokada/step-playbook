@@ -11,7 +11,7 @@ updates:
     directory: "/roles/jupyter/files"
     ignore:
       - dependency-name: "*"
-- package-ecosystem: "pip"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
