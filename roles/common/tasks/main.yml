@@ -1,17 +1,17 @@
 ---
 - name: Upgrade base package
+  ansible.builtin.apt: name="{{ packages }}" state=present update_cache=true
   become: true
-  apt: name="{{ packages }}" state=present update_cache=yes
   vars:
     packages:
-    - git
-    - vim
-    - zsh
-    - tree
-    - language-pack-ja
+      - git
+      - vim
+      - zsh
+      - tree
+      - language-pack-ja
 
-- name: Copy .bash_profile
-  copy:
+- name: Copy bash_profile
+  ansible.builtin.copy:
     src: .bash_profile
     dest: /home/ubuntu/.bash_profile
     owner: ubuntu
@@ -20,37 +20,38 @@
 
 - name: Install prezto
   # git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-  git:
+  ansible.builtin.git:
     repo: https://github.com/sorin-ionescu/prezto.git
-    recursive: yes
-    track_submodules: yes
-    force: yes
+    recursive: true
+    track_submodules: true
+    force: true
     # dest: {{ ansible_env.HOME }}/.zprezto
     dest: /home/ubuntu/.zprezto
     # create a directory if it doesn't exist
 - name: Create /home/ubuntu/.zprezto directory
-  file:
+  ansible.builtin.file:
     path: /home/ubuntu/.zprezto
     state: directory
     owner: ubuntu
     group: ubuntu
-    recurse: yes
+    recurse: true
 - name: Make symlinks for zprezto
   # setopt EXTENDED_GLOB;
   # for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   #   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}";
   # done
-  file:
-    src: '/home/ubuntu/.zprezto/runcoms/{{ item.src }}'
-    dest: '/home/ubuntu/.{{ item.src }}'
+  ansible.builtin.file:
+    src: "/home/ubuntu/.zprezto/runcoms/{{ item.src }}"
+    dest: "/home/ubuntu/.{{ item.src }}"
     owner: ubuntu
     group: ubuntu
     state: link
   with_items:
-    - { src: 'zlogin'}
-    - { src: 'zlogout'}
-    - { src: 'zpreztorc'}
-    - { src: 'zprofile'}
-    - { src: 'zshenv'}
-    - { src: 'zshrc'}
-  ignore_errors: True
+    - { src: "zlogin" }
+    - { src: "zlogout" }
+    - { src: "zpreztorc" }
+    - { src: "zprofile" }
+    - { src: "zshenv" }
+    - { src: "zshrc" }
+  ignore_errors: true
+  register: ignore_errors_register
