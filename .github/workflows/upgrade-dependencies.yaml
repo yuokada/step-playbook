@@ -32,6 +32,7 @@ jobs:
           poetry debug info
           poetry update
           poetry export -f requirements.txt --output requirements.txt --without-hashes
+          poetry export -f requirements.txt --output ci-requirements.txt  --without-hashes --with dev
       # END PYTHON DEPENDENCIES
       - name: Detect changes
         id: changes
