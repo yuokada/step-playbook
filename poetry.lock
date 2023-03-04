@@ -34,21 +34,30 @@ resolvelib = ">=0.5.3,<0.6.0"
 
 [[package]]
 name = "ansible-lint"
-version = "4.3.7"
+version = "5.4.0"
 description = "Checks playbooks for practices and behaviour that could potentially be improved"
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "ansible-lint-4.3.7.tar.gz", hash = "sha256:1012fc3f5c4c0c58eece515860f19c34c5088faa5be412eec6fae5b45bda9c4f"},
-    {file = "ansible_lint-4.3.7-py2.py3-none-any.whl", hash = "sha256:300e841f690b556a08d44902d6414283dc101079b27909e3a892f1cf1d10d7ff"},
+    {file = "ansible-lint-5.4.0.tar.gz", hash = "sha256:2160a60b4ab034c04006d701a1779340ffb0f6e28f030ff8de958e1062a88962"},
+    {file = "ansible_lint-5.4.0-py3-none-any.whl", hash = "sha256:fb57755825b50da88c226052772bd843d37714155b504175912daac0e186e8c0"},
 ]
 
 [package.dependencies]
-ansible = ">=2.8"
+enrich = ">=1.2.6"
+packaging = "*"
 pyyaml = "*"
-rich = "*"
+rich = ">=9.5.1"
 "ruamel.yaml" = {version = ">=0.15.37,<1", markers = "python_version >= \"3.7\""}
+tenacity = "*"
+wcmatch = ">=7.0"
+
+[package.extras]
+community = ["ansible (>=2.10)"]
+core = ["ansible-core (>=2.11.4)"]
+test = ["coverage (>=6.2,<6.3)", "flaky (>=3.7.0)", "psutil", "pytest (>=6.0.1)", "pytest-cov (>=2.10.1)", "pytest-xdist (>=2.1.0)", "tomli (>=1.2.3,<2.0.0)"]
+yamllint = ["yamllint (>=1.25.0)"]
 
 [[package]]
 name = "boto3"
@@ -89,6 +98,18 @@ urllib3 = ">=1.25.4,<1.27"
 
 [package.extras]
 crt = ["awscrt (==0.16.9)"]
+
+[[package]]
+name = "bracex"
+version = "2.3.post1"
+description = "Bash style brace expander."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "bracex-2.3.post1-py3-none-any.whl", hash = "sha256:351b7f20d56fb9ea91f9b9e9e7664db466eb234188c175fd943f8f755c807e73"},
+    {file = "bracex-2.3.post1.tar.gz", hash = "sha256:e7b23fc8b2cd06d3dec0692baabecb249dda94e06a617901ff03a6c56fd71693"},
+]
 
 [[package]]
 name = "cffi"
@@ -236,6 +257,24 @@ files = [
     {file = "distlib-0.3.6-py2.py3-none-any.whl", hash = "sha256:f35c4b692542ca110de7ef0bea44d73981caeb34ca0b9b6b2e6d7790dda8f80e"},
     {file = "distlib-0.3.6.tar.gz", hash = "sha256:14bad2d9b04d3a36127ac97f30b12a19268f211063d8f8ee4f47108896e11b46"},
 ]
+
+[[package]]
+name = "enrich"
+version = "1.2.7"
+description = "enrich"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "enrich-1.2.7-py3-none-any.whl", hash = "sha256:f29b2c8c124b4dbd7c975ab5c3568f6c7a47938ea3b7d2106c8a3bd346545e4f"},
+    {file = "enrich-1.2.7.tar.gz", hash = "sha256:0a2ab0d2931dff8947012602d1234d2a3ee002d9a355b5d70be6bf5466008893"},
+]
+
+[package.dependencies]
+rich = ">=9.5.1"
+
+[package.extras]
+test = ["mock (>=3.0.5)", "pytest (>=5.4.0)", "pytest-cov (>=2.7.1)", "pytest-mock (>=3.3.1)", "pytest-plus", "pytest-xdist (>=1.29.0)"]
 
 [[package]]
 name = "filelock"
@@ -699,6 +738,21 @@ files = [
 ]
 
 [[package]]
+name = "tenacity"
+version = "8.2.2"
+description = "Retry code until it succeeds"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "tenacity-8.2.2-py3-none-any.whl", hash = "sha256:2f277afb21b851637e8f52e6a613ff08734c347dc19ade928e519d7d2d8569b0"},
+    {file = "tenacity-8.2.2.tar.gz", hash = "sha256:43af037822bd0029025877f3b2d97cc4d7bb0c2991000a3d59d71517c5c969e0"},
+]
+
+[package.extras]
+doc = ["reno", "sphinx", "tornado (>=4.5)"]
+
+[[package]]
 name = "urllib3"
 version = "1.26.14"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
@@ -736,7 +790,22 @@ platformdirs = ">=2.4,<4"
 docs = ["furo (>=2022.12.7)", "proselint (>=0.13)", "sphinx (>=6.1.3)", "sphinx-argparse (>=0.4)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=22.12)"]
 test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess (>=1)", "flaky (>=3.7)", "packaging (>=23)", "pytest (>=7.2.1)", "pytest-env (>=0.8.1)", "pytest-freezegun (>=0.4.2)", "pytest-mock (>=3.10)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)"]
 
+[[package]]
+name = "wcmatch"
+version = "8.4.1"
+description = "Wildcard/glob file name matcher."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "wcmatch-8.4.1-py3-none-any.whl", hash = "sha256:3476cd107aba7b25ba1d59406938a47dc7eec6cfd0ad09ff77193f21a964dee7"},
+    {file = "wcmatch-8.4.1.tar.gz", hash = "sha256:b1f042a899ea4c458b7321da1b5e3331e3e0ec781583434de1301946ceadb943"},
+]
+
+[package.dependencies]
+bracex = ">=2.1.1"
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "6ad645b674dbbc89d7dbdf05ed5ed0435f08afe9ce686523b153ce3665b3f7f6"
+content-hash = "7a9dae2a258ceaab387175f31de3304d4ec134a0d049876a00b80263f06bdde3"
