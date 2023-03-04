@@ -33,6 +33,9 @@ jobs:
           poetry update
           poetry export -f requirements.txt --output requirements.txt --without-hashes
           poetry export -f requirements.txt --output ci-requirements.txt  --without-hashes --with dev
+          cd ./roles/jupyter/files
+          poetry update && \
+          poetry export -f requirements.txt --output requirements.txt --without-hashes
       # END PYTHON DEPENDENCIES
       - name: Detect changes
         id: changes
