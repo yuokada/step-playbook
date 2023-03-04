@@ -9,12 +9,12 @@ packages = [{include = "step_playbook"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-ansible = ">=2.7.9"
+ansible = "^2.7.9"
 boto3 = "^1.9"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.1.1"
-ansible-lint = ">=4.0.1"
+ansible-lint = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core"]
