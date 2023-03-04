@@ -4,7 +4,7 @@
   tasks:
     - name: "Create ec2 instance"
       # see: https://docs.ansible.com/ansible/devel/modules/ec2_module.html
-      ec2:
+      amazon.aws.ec2_instance:
         instance_type: t2.small
         image: ami-009571af26dc2a231
         key_name: ssh-for-redash
