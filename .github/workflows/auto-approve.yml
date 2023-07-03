@@ -18,4 +18,4 @@ jobs:
         if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
         env:
           # GH_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
