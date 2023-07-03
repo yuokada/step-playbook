@@ -13,7 +13,7 @@ ansible = "^8.1"
 boto3 = "^1.26"
 
 [tool.poetry.group.dev.dependencies]
-pre-commit = "^3.3.2"
+pre-commit = "^3.3.3"
 ansible-lint = "^6.0.0"
 
 [build-system]
