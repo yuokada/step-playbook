@@ -1,0 +1,21 @@
+---
+name: Dependabot auto-approve
+on: pull_request
+
+permissions:
+  pull-requests: write
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.6.0
+      - name: Approve the pull request
+        run: gh pr review --approve "${{ github.event.pull_request.html_url }}"
+        if: steps.metadata.outputs.update-type == 'version-update:semver-minor' || steps.metadata.outputs.update-type == 'version-update:semver-patch'
+        env:
+          GH_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_REPO_TOKEN }}
