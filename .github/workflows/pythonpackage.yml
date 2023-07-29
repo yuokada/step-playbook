@@ -20,7 +20,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r ci-requirements.txt
+        pip install poetry
+        poetry install --no-root --with dev
     - name: Lint with flake8
       run: |
         pip install flake8
@@ -30,7 +31,7 @@ jobs:
         flake8 . --ignore F821 --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Lint with Ansiblelint
       run: |
-        ansible --version
-        ansible-lint --version
-        ansible-lint roles/*/*/*.yml
-        ansible-playbook -i inventory/web.yml --syntax-check *.yml
+        poetry run ansible --version
+        poetry run ansible-lint --version
+        poetry run ansible-lint roles/*/*/*.yml
+        poetry run ansible-playbook -i inventory/web.yml --syntax-check *.yml
