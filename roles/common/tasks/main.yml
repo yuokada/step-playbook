@@ -1,6 +1,9 @@
 ---
 - name: Upgrade base package
-  ansible.builtin.apt: name="{{ packages }}" state=present update_cache=true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: true
   become: true
   vars:
     packages:
@@ -16,7 +19,7 @@
     dest: /home/ubuntu/.bash_profile
     owner: ubuntu
     group: ubuntu
-    mode: 0644
+    mode: '0644'
 
 - name: Install prezto
   # git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
