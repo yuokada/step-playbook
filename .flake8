@@ -1,0 +1,11 @@
+; see: https://flake8.pycqa.org/en/6.0.0/user/configuration.html
+[flake8]
+ignore = E226,E302,E41
+max-line-length = 160
+max-complexity = 10
+exclude =
+    migrations
+    __pycache__
+    manage.py
+    settings.py
+    .venv
