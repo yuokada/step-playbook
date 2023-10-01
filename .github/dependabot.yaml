@@ -5,17 +5,26 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+      day: "saturday"
+      time: "07:00"
+      timezone: "Asia/Tokyo"    
     reviewers:
       - "yuokada"
   - package-ecosystem: "pip"
     directory: "/roles/jupyter/files"
     schedule:
       interval: "monthly"
+      day: "saturday"
+      time: "07:00"
+      timezone: "Asia/Tokyo"    
     open-pull-requests-limit: 0
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "monthly"
+      day: "saturday"
+      time: "07:00"
+      timezone: "Asia/Tokyo"    
     open-pull-requests-limit: 3
     reviewers:
       - "yuokada"
