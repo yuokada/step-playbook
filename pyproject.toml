@@ -10,7 +10,7 @@ packages = [{include = "step_playbook"}]
 [tool.poetry.dependencies]
 python = "^3.9"
 ansible = "^8.7"
-boto3 = "^1.33"
+boto3 = "^1.34"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.6.0"
