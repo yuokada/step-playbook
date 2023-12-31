@@ -2,17 +2,17 @@
 
 [[package]]
 name = "ansible"
-version = "8.5.0"
+version = "8.7.0"
 description = "Radically simple IT automation"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "ansible-8.5.0-py3-none-any.whl", hash = "sha256:2749032e26b0dbc9a694528b85fd89e7f950b8c7b53606f17dd997f23ac7cc88"},
-    {file = "ansible-8.5.0.tar.gz", hash = "sha256:327c509bdaf5cdb2489d85c09d2c107e9432f9874c8bb5c0702a731160915f2d"},
+    {file = "ansible-8.7.0-py3-none-any.whl", hash = "sha256:fa7d3bc2dfdb0ab031df645814ff86b15cb5ec041bfbee4041f795abfa5646ca"},
+    {file = "ansible-8.7.0.tar.gz", hash = "sha256:3a5ca5152e4547d590e40b542d76b18dbbe2b36da4edd00a13a7c51a374ff737"},
 ]
 
 [package.dependencies]
-ansible-core = ">=2.15.5,<2.16.0"
+ansible-core = ">=2.15.7,<2.16.0"
 
 [[package]]
 name = "ansible-compat"
@@ -1297,4 +1297,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "464197f14c0bba049ea72ee02fac9d9160bc51267dc4c27f6659c4308334d690"
+content-hash = "8450c92e1ec6a247e02562846c137649ad31b0f866e47ded39c6e09bf64ee14d"
