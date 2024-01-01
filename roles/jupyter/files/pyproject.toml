@@ -11,7 +11,7 @@ notebook = "^6.4.12"
 boto3 = "^1.26.84"
 numpy = "^1.24.2"
 pandas = "^1.5.3"
-ansible = "^7.3.0"
+ansible = "^8.5.0"
 pyhive = "^0.6.1"
 
 
