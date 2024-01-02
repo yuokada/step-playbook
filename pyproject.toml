@@ -14,7 +14,7 @@ boto3 = "^1.34"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.6.0"
-ansible-lint = { version = "^6.21.1", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "^6.22.1", markers = "platform_system != 'Windows'" }
 flake8 = "^6.1.0"
 
 [build-system]
