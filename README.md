@@ -1,5 +1,5 @@
 ## step server playbook & packer
-[![Build Status](https://travis-ci.com/yuokada/step-playbook.svg?token=moxtxRvzi4bB9jfjEJjk&branch=master)](https://travis-ci.com/yuokada/step-playbook)
+[![Python CI](https://github.com/yuokada/step-playbook/actions/workflows/pythonpackage.yml/badge.svg)](https://github.com/yuokada/step-playbook/actions/workflows/pythonpackage.yml)
 
 
 <!--
