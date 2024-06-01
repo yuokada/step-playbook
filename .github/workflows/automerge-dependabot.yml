@@ -9,6 +9,7 @@ permissions: write-all
 
 jobs:
   call-auto-merge:
+    if: github.actor == 'dependabot[bot]'
     uses: yuokada/shared-github-actions/.github/workflows/automerge-dependabot.yml@master
     with:
       actor: ${{ github.actor }}
