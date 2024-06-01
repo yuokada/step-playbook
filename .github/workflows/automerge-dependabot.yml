@@ -1,0 +1,16 @@
+---
+name: Call Dependabot Auto-Merge
+
+on: pull_request
+
+permissions: write-all
+# permissions:
+#   pull-requests: write
+
+jobs:
+  call-auto-merge:
+    uses: yuokada/shared-github-actions/.github/workflows/automerge-dependabot.yml@master
+    with:
+      actor: ${{ github.actor }}
+    secrets: inherit
+
