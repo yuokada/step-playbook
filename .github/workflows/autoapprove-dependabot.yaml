@@ -8,6 +8,7 @@ permissions:
 
 jobs:
   call-auto-approve:
+    if: github.actor == 'dependabot[bot]'
     uses: yuokada/shared-github-actions/.github/workflows/autoapprove-dependabot.yml@master
     with:
       actor: ${{ github.actor }}
