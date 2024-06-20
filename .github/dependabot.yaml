@@ -17,7 +17,7 @@ updates:
       day: "saturday"
       time: "07:00"
       timezone: "Asia/Tokyo"    
-    open-pull-requests-limit: 0
+    # open-pull-requests-limit: 0
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
