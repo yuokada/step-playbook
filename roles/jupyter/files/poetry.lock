@@ -1471,12 +1471,12 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyhive"
-version = "0.6.5"
+version = "0.7.0"
 description = "Python interface to Hive"
 optional = false
 python-versions = "*"
 files = [
-    {file = "PyHive-0.6.5.tar.gz", hash = "sha256:cae07bd177527d04f6a5c7f96cb1849ba8bd9121750b75bbf5e3d4a3be566909"},
+    {file = "PyHive-0.7.0.tar.gz", hash = "sha256:585beff9578a61b99aed47140fec97e26323e8c685a5b5d0c8550a8ebf8a24e0"},
 ]
 
 [package.dependencies]
@@ -1485,6 +1485,7 @@ python-dateutil = "*"
 
 [package.extras]
 hive = ["sasl (>=0.2.1)", "thrift (>=0.10.0)", "thrift_sasl (>=0.1.0)"]
+hive-pure-sasl = ["pure-sasl (>=0.6.2)", "thrift (>=0.10.0)", "thrift_sasl (>=0.1.0)"]
 kerberos = ["requests_kerberos (>=0.12.0)"]
 presto = ["requests (>=1.0.0)"]
 sqlalchemy = ["sqlalchemy (>=1.3.0)"]
@@ -2158,4 +2159,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "79f2fcfc852e6a6ba22fe27edf2fa23a208aee4aa94f52800d3792ba61ac2e0b"
+content-hash = "31c7200b8ca469ce22354194b0384d5952ed49b3fdae431109bbd76bcd12d64b"
