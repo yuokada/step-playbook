@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-notebook = "^6.4.12"
+notebook = "^7.2.1"
 boto3 = "^1.34.130"
 numpy = "^2.0.0"
 pandas = "^2.2.2"
