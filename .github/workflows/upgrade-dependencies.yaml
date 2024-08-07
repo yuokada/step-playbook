@@ -25,6 +25,17 @@ jobs:
         with:
           python-version: "3.9"
           cache: pip
+      #- name: Upgrade Python dependencies
+      #  # ADD YOUR CUSTOM DEPENDENCY UPGRADE COMMANDS BELOW
+      #  run: |
+      #    pip install -U poetry
+      #    poetry debug info
+      #    poetry update
+      #    poetry export -f requirements.txt --output requirements.txt --without-hashes
+      #    poetry export -f requirements.txt --output ci-requirements.txt  --without-hashes --with dev
+      #    cd ./roles/jupyter/files
+      #    poetry update && \
+      #    poetry export -f requirements.txt --output requirements.txt --without-hashes
       - name: Upgrade Python dependencies
         # ADD YOUR CUSTOM DEPENDENCY UPGRADE COMMANDS BELOW
         run: |
@@ -33,9 +44,6 @@ jobs:
           poetry update
           poetry export -f requirements.txt --output requirements.txt --without-hashes
           poetry export -f requirements.txt --output ci-requirements.txt  --without-hashes --with dev
-          cd ./roles/jupyter/files
-          poetry update && \
-          poetry export -f requirements.txt --output requirements.txt --without-hashes
       # END PYTHON DEPENDENCIES
       - name: Detect changes
         id: changes
