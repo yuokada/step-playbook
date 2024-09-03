@@ -7,7 +7,7 @@ updates:
       interval: "monthly"
       day: "saturday"
       time: "07:00"
-      timezone: "Asia/Tokyo"    
+      timezone: "Asia/Tokyo"
     reviewers:
       - "yuokada"
   - package-ecosystem: "pip"
@@ -16,7 +16,11 @@ updates:
       interval: "monthly"
       day: "saturday"
       time: "07:00"
-      timezone: "Asia/Tokyo"    
+      timezone: "Asia/Tokyo"
+    groups:
+      all-depdndencies:
+        patterns:
+          - "*"
     # open-pull-requests-limit: 0
   - package-ecosystem: "pip"
     directory: "/"
@@ -24,10 +28,8 @@ updates:
       interval: "monthly"
       day: "saturday"
       time: "07:00"
-      timezone: "Asia/Tokyo"    
-    open-pull-requests-limit: 3
-    reviewers:
-      - "yuokada"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: "pygments"
       - dependency-name: "nbconvert"
